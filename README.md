@@ -10,7 +10,7 @@ php meff.php Extension_Name
 ```
 You can also install this via modman:
 ```bash
-modman clone https://github.com/tegansnyder/meff.git
+modman clone https://github.com/empiricompany/meff.git
 ```
 
 ##### Example:
