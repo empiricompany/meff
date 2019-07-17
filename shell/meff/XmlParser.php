@@ -183,7 +183,7 @@ class XmlParser extends ExtensionXml
 		}
 		sort($configCodes);
 		$configCodes = array_unique($configCodes);
-		$configCodes[] = 'advanced/modules_disable_output/'.parent::$extension_name;
+		$configCodes[] = 'advanced/modules_disable_output/'.parent::$extension_full_name;
 		return $configCodes;
 
 	}
