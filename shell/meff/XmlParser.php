@@ -150,6 +150,45 @@ class XmlParser extends ExtensionXml
 	}
 
 	/**
+	 * Get that Magento system configs
+	 *
+	 * @return array
+	 */
+	function getSystemConfig() 
+	{
+
+		$this->debugOut('getSystemConfig', null ,'FUNCTION');
+
+		$configCodes = array();
+
+		$main_node = parent::$extension_system_xml;
+
+		if (isset($main_node->sections)) {
+
+			foreach ($main_node->sections->children() as $sectionName => $section) {
+				if (isset($section->groups)) {
+					foreach ($section->groups->children() as $groupName => $group) {
+						if (isset($group->fields)) {
+							foreach ($group->fields->children() as $code => $node) {
+								
+								$configCodes[] = implode("/", array($sectionName, $groupName, $code) );
+							}
+						}
+					}
+				}
+
+
+			}
+
+		}
+		sort($configCodes);
+		$configCodes = array_unique($configCodes);
+		$configCodes[] = 'advanced/modules_disable_output/'.parent::$extension_name;
+		return $configCodes;
+
+	}
+
+	/**
 	 * Get that Magento translate csvs
 	 *
 	 * @param string $main_node (global, frontend, adminhtml)

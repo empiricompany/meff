@@ -39,6 +39,9 @@ class Meff
 	// @SimpleXMLElement app/code_pool/company_name/extension_name
 	protected static $extension_config_xml;
 
+	// @SimpleXMLElement app/code_pool/company_name/extension_name
+	protected static $extension_system_xml;
+
 	/**
 	 * Instantiate all variables, class instances, and do the work
 	 *
@@ -64,6 +67,8 @@ class Meff
 
 		$layout_xml_files_from_xml = $xml_parser->getLayoutXmlFilesFromXml();
 
+		$system_xml_codes = $xml_parser->getSystemConfig();
+
 		$file_roots = $xml_parser->getFileRoots();
 
 		$files_from_layout_xml = $xml_parser->getFilesFromLayoutXml();
@@ -83,6 +88,8 @@ class Meff
 		$layout_xml_file_paths = $xml_parser->identifyFilesFromLayoutXml();
 		$file_mentions_file_paths = $xml_parser->identifyFileMentionsPaths($file_mentions_php);
 		$lib_mentions = $xml_parser->parseSourceForLibs($php_files);
+
+
 		
 		$this->debugOut('magento_dir', self::$magento_dir);
 		$this->debugOut('extension_full_name', self::$extension_full_name);
@@ -130,6 +137,10 @@ class Meff
 
 		foreach ($lib_mentions as $p) {
 			echo $p . PHP_EOL;
+		}
+
+		foreach ($system_xml_codes as $p) {
+			echo 'n98-magerun config:delete '.$p . PHP_EOL;
 		}
 
 	}

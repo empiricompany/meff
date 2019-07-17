@@ -18,6 +18,7 @@ class ExtensionXml extends Meff
 		$this->getCodePool();
 		$this->getMainExtensionDir();
 		$this->getExtensionConfigXml();
+		$this->getExtensionSystemXml();
 
 	}
 
@@ -98,6 +99,25 @@ class ExtensionXml extends Meff
 		$extension_config_xml = simplexml_load_file($extension_config_xml_path);
 
 		parent::$extension_config_xml = $extension_config_xml;
+
+	}
+
+	/**
+	 * Load the Magento extensions main config.xml file
+	 */
+	private function getExtensionSystemXml() 
+	{
+
+		// path to the extensions config.xml
+		$extension_system_xml_path = parent::$extension_base_dir . '/etc/system.xml';
+
+		if (!file_exists($extension_system_xml_path)) {
+			$this->displayError('Cant find path to extension system xml.');
+		}
+
+		$extension_system_xml = simplexml_load_file($extension_system_xml_path);
+
+		parent::$extension_system_xml = $extension_system_xml;
 
 	}
 
