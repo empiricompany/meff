@@ -26,8 +26,9 @@ FILES IDENTIFIED FOR: SchumacherFM_OpCachePanel
 /var/www/site/app/design/adminhtml/default/default/template/opcachepanel/unloaded.phtml
 /var/www/site/app/design/adminhtml/default/default/template/opcachepanel/graph.phtml
 System config entries: SchumacherFM_OpCachePanel
-n98-magerun config:delete system/opcachepanel/api_key_name
 n98-magerun config:delete system/opcachepanel/api_key
+n98-magerun config:delete system/opcachepanel/api_key_name
+n98-magerun config:delete advanced/modules_disable_output/OpCachePanel
 ```
 
 #### Debug Mode:
