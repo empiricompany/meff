@@ -139,6 +139,8 @@ class Meff
 			echo $p . PHP_EOL;
 		}
 
+		$cli_txt->write('System config entries', self::$extension_full_name);
+
 		foreach ($system_xml_codes as $p) {
 			echo 'n98-magerun config:delete '.$p . PHP_EOL;
 		}
